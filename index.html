@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body >
+    <div id="bodyProduct"></div>
+    <!-- Start Header -->
+    <header >
+        <div class="container">
+            <h2 class="mx-auto position-relative fw-normal">Bookmarker</h2>
+        </div>
+    </header>
+    <!-- End Header -->
+    <!-- Start Section  -->
+    <section>
+        <div class="container">
+            <h2><i class="fa-solid fa-bookmark"></i> Bookmark your favorite sites <i class="fa-solid fa-bookmark"></i></h2>
+            <form action="">
+                <div class="site-name mt-4 fw-bold fs-5">
+                    <label for="siteName"> <i class="fa-solid fa-book me-2 text-success mb-3"></i>Site Name</label>
+                    <input type="text" class="form-control" id="siteName" placeholder="Bookmark Name">
+                <p class="text-danger m-1 fs-6 d-none" id="alertName"><i class="fa-solid fa-circle-exclamation"></i> Site Name Invalid</p>
+
+                </div>
+                <div class="site-url mt-4 fw-bold fs-5">
+                    <label for="siteUrl"><i class="fa-solid fa-link me-2 text-success mb-3"></i>Site URL</label>
+                    <input type="url" class="form-control" id="siteUrl" placeholder="Website URL">
+                    <p class="text-danger m-1 fs-6 d-none" id="alertUrl"><i class="fa-solid fa-circle-exclamation"></i> Site URL Invalid</p>
+                </div>
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="addProduct()" type="button" class="btn btn-success w-25 d-block mx-auto mt-4">Submit</button>
+            </form>
+        </div>
+    </section>
+    <!-- End Section  -->
+    <!-- Start Table -->
+    <div class="table ">
+        <div class="container">
+            <table class="table text-center table-light table-bordered table-striped  align-middle">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Website Name</th>
+                        <th>Visit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="myData">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- End Table -->
+    <script src="js/main.js"></script>
+</body>
+</html>
