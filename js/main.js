@@ -1,8 +1,9 @@
-var siteNameInput = document.getElementById('siteName');
-var siteUrlInput = document.getElementById('siteUrl');
-var alertName = document.getElementById('alertName');
-var alertUrl = document.getElementById('alertUrl');
-var productList = [];
+const siteNameInput = document.getElementById('siteName');
+const siteUrlInput = document.getElementById('siteUrl');
+const alertName = document.getElementById('alertName');
+const alertUrl = document.getElementById('alertUrl');
+
+let productList = [];
 if ( localStorage.getItem("products") != null ) {
     productList = JSON.parse(localStorage.getItem("products"));
     displayProduct();
@@ -15,7 +16,7 @@ function addProduct() {
         validName();
         validUrl();
     }else {
-        var object = {
+        let object = {
             name: siteNameInput.value,
             url: siteUrlInput.value,
         }
@@ -28,13 +29,13 @@ function addProduct() {
 
 // Display Products
 function displayProduct() {
-    temp = '';
-    for (var i = 0 ; i < productList.length ; i++ ) {
+    let temp = '';
+    for (let i = 0 ; i < productList.length ; i++ ) {
         temp += `<tr>
-                    <td>`+(i+1)+`</td>
-                    <td>`+productList[i].name+`</td>
-                    <td><a href="`+productList[i].url+`" target="_blank"><button class="btn btn-warning"><i class="fa-solid fa-eye"></i> Visit</button></a></td>
-                    <td><button onclick="deleteProduct(`+i+`)" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</button></td>
+                    <td>${(i+1)}</td>
+                    <td>${productList[i].name}</td>
+                    <td><a href="${productList[i].url}" target="_blank"><button class="btn btn-warning"><i class="fa-solid fa-eye"></i> Visit</button></a></td>
+                    <td><button onclick="deleteProduct(${i})" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</button></td>
                 </tr>`
     }
     document.getElementById('myData').innerHTML = temp;
@@ -60,8 +61,9 @@ function clear() {
 
 // valid
 function validProduct() {
+    let temp2 = "";
     if(siteNameInput.value == '' || siteUrlInput.value == '') {
-        var temp =  `     <div class="valid translate-middle">
+        temp2 =  `     <div class="valid translate-middle">
         <div class="main d-flex justify-content-between mb-3">
             <div class="color d-flex gap-2">
                 <div class="red"></div>
@@ -79,7 +81,7 @@ function validProduct() {
         </div>  
      </div>`
     }
-    document.getElementById("bodyProduct").innerHTML = temp;
+    document.getElementById("bodyProduct").innerHTML = temp2;
     document.querySelector(".close").addEventListener('click', ()=>{
         document.getElementById("bodyProduct").innerHTML = '';
     });
@@ -88,7 +90,7 @@ function validProduct() {
 // valid Name
 siteNameInput.addEventListener('change' , validName);
 function validName(){
-    var regexname = /^[a-zA-Z]{3,}$/;
+    let regexname = /^[a-zA-Z]{3,}$/;
     if(regexname.test(siteNameInput.value)){
         siteNameInput.classList.add('is-valid');
         siteNameInput.classList.remove('is-invalid');
@@ -105,7 +107,7 @@ function validName(){
 // valid Url
 siteUrlInput.addEventListener('change' , validUrl);
 function validUrl(){
-    var regexurl = /^(https|http):\/\/[a-zA-Z0-9]/;
+    let regexurl = /^(https|http):\/\/[a-zA-Z0-9]/;
     if(regexurl.test(siteUrlInput.value)){
         siteUrlInput.classList.add('is-valid');
         siteUrlInput.classList.remove('is-invalid');
